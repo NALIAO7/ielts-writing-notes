@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>雅思写作论点和论证展开方法 · 图文总结</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    '#1a2e25',
+        paper:  '#f7f3eb',
+        cream:  '#efe8da',
+        moss:   '#3a5a40',
+        sage:   '#8aa888',
+        ochre:  '#d97757',
+        rust:   '#b04a2f',
+        muted:  '#7a7066',
+        line:   '#d8cfbe',
+      },
+      fontFamily: {
+        serif: ['"Noto Serif SC"', 'Lora', 'Georgia', 'serif'],
+        sans:  ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+        en:    ['Lora', 'Georgia', 'serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: '"Noto Sans SC"', system-ui, sans-serif; background: #f7f3eb; color: #1a2e25; }
+  .font-serif { font-family: '"Noto Serif SC"', Lora, Georgia, serif; }
+
+  /* 纸张纹理 */
+  .paper-grain {
+    background-image:
+      radial-gradient(rgba(26,46,37,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(26,46,37,0.02) 1px, transparent 1px);
+    background-size: 24px 24px, 13px 13px;
+    background-position: 0 0, 6px 6px;
+  }
+
+  /* 卡片进入动画 */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-1 { transition-delay: 0.05s; }
+  .reveal-2 { transition-delay: 0.15s; }
+  .reveal-3 { transition-delay: 0.25s; }
+
+  /* 章节编号大字 */
+  .chapter-num {
+    font-family: Lora, Georgia, serif;
+    font-weight: 500;
+    font-style: italic;
+    color: #b04a2f;
+    letter-spacing: -0.02em;
+  }
+
+  /* 关键引文左竖线 */
+  .pull-quote {
+    border-left: 3px solid #d97757;
+    padding-left: 1.25rem;
+    font-family: '"Noto Serif SC"', serif;
+    font-weight: 500;
+  }
+
+  /* 高亮关键词 */
+  .hl { background: linear-gradient(transparent 60%, rgba(217,119,87,0.28) 60%); padding: 0 0.15em; }
+  .hl-green { background: linear-gradient(transparent 60%, rgba(58,90,64,0.22) 60%); padding: 0 0.15em; }
+
+  /* 标签徽章 */
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    border: 1px solid #1a2e25;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: #1a2e25;
+  }
+  .badge-solid {
+    background: #1a2e25;
+    color: #f7f3eb;
+  }
+  .badge-ochre {
+    border-color: #d97757;
+    color: #b04a2f;
+  }
+
+  /* 9个万能思路 chip */
+  .chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.45rem 0.9rem;
+    background: #fff;
+    border: 1px solid #d8cfbe;
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+    color: #1a2e25;
+    transition: all 0.2s;
+  }
+  .chip:hover { transform: translateY(-2px); border-color: #d97757; color: #b04a2f; }
+  .chip-active { background: #1a2e25; color: #f7f3eb; border-color: #1a2e25; }
+
+  /* 流程箭头 */
+  .arrow-down::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: #1a2e25;
+    margin: 12px auto 0;
+  }
+
+  /* 进度条 */
+  .progress-dot { width: 8px; height: 8px; border-radius: 999px; background: #d8cfbe; transition: all 0.3s; }
+  .progress-dot.active { background: #b04a2f; transform: scale(1.4); }
+
+  /* 装饰小图 */
+  .ornament {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: #d97757;
+    transform: rotate(45deg);
+    margin: 0 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* 选择器 */
+  ::selection { background: #d97757; color: #fff; }
+</style>
+</head>
+<body class="paper-grain">
+
+<!-- ============== HERO ============== -->
+<header class="relative max-w-5xl mx-auto px-6 pt-20 pb-16">
+  <div class="reveal">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="badge badge-solid">写作方法论</span>
+      <span class="text-xs tracking-widest text-muted uppercase">IELTS Writing · Argumentation</span>
+    </div>
+    <h1 class="font-serif text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-ink mb-6">
+      从根源解决<br/>
+      雅思写作的<span class="hl">论点</span>与<span class="hl">论证展开</span>
+    </h1>
+    <p class="text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
+      一份基于 <span class="font-en italic">14</span> 张原图笔记梳理的图文总结。
+      核心只有一句话——<span class="font-serif font-bold text-ink">论点是文章一切发散的根源</span>。
+      围绕这一原点，用"万能思路 × 切换视角"做排列组合，再优中选优。
+    </p>
+  </div>
+
+  <div class="reveal reveal-2 mt-12 grid grid-cols-3 gap-4 max-w-3xl">
+    <div class="border-t-2 border-ink pt-3">
+      <div class="font-en text-3xl font-semibold text-rust">9</div>
+      <div class="text-sm text-muted mt-1">个万能思路</div>
+    </div>
+    <div class="border-t-2 border-ink pt-3">
+      <div class="font-en text-3xl font-semibold text-rust">2<span class="text-base text-muted">+</span></div>
+      <div class="text-sm text-muted mt-1">个独立视角</div>
+    </div>
+    <div class="border-t-2 border-ink pt-3">
+      <div class="font-en text-3xl font-semibold text-rust">27</div>
+      <div class="text-sm text-muted mt-1">种潜在观点组合</div>
+    </div>
+  </div>
+
+  <div class="reveal reveal-3 mt-16 flex items-center gap-4">
+    <div class="ornament"></div>
+    <div class="text-sm text-muted tracking-widest">CHAPTER INDEX</div>
+    <div class="ornament"></div>
+  </div>
+</header>
+
+<!-- ============== 9个万能思路预览 ============== -->
+<section class="max-w-5xl mx-auto px-6 mb-20">
+  <div class="reveal bg-white border border-line rounded-2xl p-8">
+    <div class="flex items-baseline justify-between mb-5">
+      <h2 class="font-serif text-2xl font-bold text-ink">九个万能思路</h2>
+      <span class="text-xs text-muted tracking-widest">CORE IDEAS POOL</span>
+    </div>
+    <p class="text-sm text-muted mb-5">想不出观点时，直接从这一池子里捞，扔到题目上，再硬着头皮想怎么展开。</p>
+    <div class="flex flex-wrap gap-2.5">
+      <span class="chip chip-active">安全</span>
+      <span class="chip chip-active">钱</span>
+      <span class="chip">时间</span>
+      <span class="chip">健康</span>
+      <span class="chip">兴趣</span>
+      <span class="chip">能力</span>
+      <span class="chip">社交</span>
+      <span class="chip">科技</span>
+      <span class="chip">环境</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 14 个章节 ============== -->
+
+<!-- Chapter 1 -->
+<section class="max-w-5xl mx-auto px-6 mb-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">01</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.4 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">论点是文章一切发散的根源</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          解决"想不出观点 / 观点空洞"问题的根源性方法，是先意识到——
+          <span class="hl">论点的选择决定了整篇文章的质量上限</span>。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          我们选正方还是反方，<span class="font-bold">完全取决于哪一方的观点更有可聊性</span>。
+          写出什么质量（篇幅、学术化程度）的论证，也取决于论点本身——
+          是不是自己有很多话想说、并且擅长的话题；至于论据，反倒是次要的。
+        </p>
+        <div class="pull-quote text-lg text-ink my-5">
+          很多同学"只能将空洞的观点用车轱辘话反复说"——这就是提高的第一步：先看清自己的问题长什么样。
+        </div>
+        <div class="flex gap-2 flex-wrap mt-4">
+          <span class="badge">根源论</span>
+          <span class="badge">误区识别</span>
+          <span class="badge badge-ochre">核心定理</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 2 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">02</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.5 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">万能思路：观点荒漠里的救生圈</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          接下来要解决的是<span class="hl">想不出观点 + 论点展开空洞低质</span>两个问题，都可以从<span class="font-bold">思路和角度</span>两个层面入手。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          如果连观点本身都想不到，<span class="hl-green">最直接的方式就是用万能思路</span>。这不是靠社会阅历找到对应方向，而是把万能思路直接"扔"在题目上，再硬着头皮想怎么展开。
+        </p>
+        <div class="bg-cream border-l-4 border-ochre p-5 my-5 rounded-r-lg">
+          <div class="text-xs tracking-widest text-rust mb-2 font-bold">例题</div>
+          <p class="font-serif text-lg text-ink leading-relaxed">
+            "你认为是否应该将所有的同类型犯罪采取完全相同的量刑标准？"
+          </p>
+          <p class="text-sm text-muted mt-2">→ 这道犯罪类难题，对不常接触的彦祖和热巴来说就是用社会阅历很难回答的题目。<br/>
+          → 把上面的万能思路直接扔在这道题上即可。</p>
+        </div>
+        <div class="flex gap-2 flex-wrap mt-4">
+          <span class="badge">万能思路</span>
+          <span class="badge">9个池子</span>
+          <span class="badge badge-ochre">硬套法</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 3 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">03</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.5 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">实战：安全和钱两个思路的展开</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          把万能思路强行扔上去之后，再想怎么展开，就能找到一些破题思路。
+        </p>
+        <div class="grid md:grid-cols-2 gap-4 my-5">
+          <div class="bg-white border border-line rounded-xl p-5">
+            <div class="text-xs tracking-widest text-rust font-bold mb-2">思路 · 安全</div>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              从安全的角度讲，对所有犯罪采取严格且统一的量刑标准，可以促进社会的安全和稳定。
+            </p>
+          </div>
+          <div class="bg-white border border-line rounded-xl p-5">
+            <div class="text-xs tracking-widest text-rust font-bold mb-2">思路 · 钱</div>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              从政府开销的角度讲，对所有犯罪都具体情况具体分析而非统一量刑，就需要政府增加司法从业人员的数量、每位法律工作者所花时间更多 → 财政预算倾斜不合理、不现实。
+            </p>
+          </div>
+        </div>
+        <div class="pull-quote text-base text-ink my-5">
+          PS：并不一定非要让万能思路和正方产生火花。比如这里"钱"对应的恰恰是反方思路——立场选择取决于哪一方<span class="font-bold">更有话可聊</span>。方法要灵活。
+        </div>
+        <div class="flex gap-2 flex-wrap mt-4">
+          <span class="badge">灵活改立场</span>
+          <span class="badge">话多优先</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 4 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">04</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.6 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">切换视角：每道题至少藏两个视角</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          解决论点和论点扩充数量不足的第二个方法——<span class="hl">切换视角</span>。
+          雅思写作的题干中往往隐藏着不同的视角，未必会以文字形式直观呈现，但几乎每道题都至少包含两个独立不同的视角。
+        </p>
+        <div class="bg-cream border border-line rounded-xl p-5 my-5">
+          <div class="text-xs tracking-widest text-rust font-bold mb-3">话题 × 默认视角</div>
+          <ul class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink/80">
+            <li><span class="font-bold">教育类</span>：学校 / 学生和老师</li>
+            <li><span class="font-bold">社会类</span>：政府和老百姓</li>
+            <li><span class="font-bold">家庭类</span>：父母和子女</li>
+            <li><span class="font-bold">职场类</span>：资本和打工人</li>
+            <li><span class="font-bold">消费类</span>：商家和消费者</li>
+          </ul>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">而且视角不止一种——比如教育和社会相关的话题，可以把学校、老师、学生、政府<span class="font-bold">全部</span>纳入考量。</p>
+        <div class="flex gap-2 flex-wrap mt-4">
+          <span class="badge">视角切换</span>
+          <span class="badge">跨话题组合</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 5 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">05</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.7 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">视角 × 钱：从一个思路切出三个维度</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          提到"钱"，能想的不只是个人层面的省钱或花钱——
+          <span class="hl-green">对政府：</span>这笔开支是否合理 / 预算是否充足；
+          <span class="hl-green">对学校：</span>有没有足够的钱办这个活动；
+          <span class="hl-green">对学生：</span>家庭经济状况能否支撑。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          同一道题从钱的角度就能切出政府 / 学校 / 学生三个维度，对两个主体段来说，就多了一个思路的富裕。
+        </p>
+        <div class="bg-cream border-l-4 border-moss p-5 my-5 rounded-r-lg">
+          <div class="text-xs tracking-widest text-moss font-bold mb-2">新例题</div>
+          <p class="font-serif text-lg text-ink leading-relaxed">
+            "现在人们对于广告的敏感程度正在降低，这是什么原因导致的呢？"
+          </p>
+          <p class="text-sm text-muted mt-2">→ 这显然包含 <span class="font-bold">商家</span>和<span class="font-bold">消费者</span>两个不同视角。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 6 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">06</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.8 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">商家视角展开：把视角转过去</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          视角转向商家，可写的东西就多出不少：
+        </p>
+        <div class="bg-white border border-line rounded-xl p-6 my-5">
+          <ul class="space-y-3 text-sm text-ink/85 leading-relaxed">
+            <li class="flex gap-3">
+              <span class="text-rust font-bold font-en">A.</span>
+              <span><span class="font-bold">结论：</span>广告对消费者吸引力降低，更多是<span class="hl">商家的原因</span>。</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-rust font-bold font-en">B.</span>
+              <span><span class="font-bold">原因：</span>商家在同赛道互相抄袭彼此广告，使广告呈现同质化。</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-rust font-bold font-en">C.</span>
+              <span><span class="font-bold">后果：</span>消费者在各种社交平台持续刷到同类同质化广告后，逐渐对后续广告失去兴趣。</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-rust font-bold font-en">D.</span>
+              <span><span class="font-bold">影响：</span>具有购买潜力的人甚至不会等广告播放完毕就退出宣传视频 → 广告吸引力逐渐降低。</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pull-quote text-base text-ink my-5">
+          每一句都是单独逻辑点，不存在开头案例展示和后续的逻辑重复——这就是<span class="font-bold">论证应该兼顾"言简意赅 + 充分展开"</span>的实操。
+        </div>
+        <div class="flex gap-2 flex-wrap mt-4">
+          <span class="badge">言简意赅</span>
+          <span class="badge">充分展开</span>
+          <span class="badge badge-ochre">特殊疑问词提问法</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 7 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">07</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.9 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">观点可聊时，连方法都不需要</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          当我们选择的观点和角度本身就对自己有<span class="hl">极强可聊性</span>时，甚至不需要"特殊疑问词提问法"这种辅助方法，就能把内容充分扩展、保持高学术写作质量。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          话够多的时候，我们不需要任何方法的束缚，<span class="font-bold">只需要优中选优找到自己最能拿高分的那一项</span>。
+        </p>
+        <div class="pull-quote text-base text-ink my-5">
+          课程真正要培养的，是<span class="font-bold">自己的写作能力</span>，而不是过于应试的死记硬背——抓住从不同视角和万能思路入手拓展观点的<span class="font-bold">方法</span>，而不是照搬范文词句。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 8 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">08</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.10 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">为什么视角能直接决定质量</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          很多同学觉得广告敏感度降低这道题抽象困难，是因为<span class="hl">自动把答题思路代入到了消费者视角</span>，甚至更具体的"自己个人视角"。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          当题目增加了<span class="font-bold">商家视角</span>作为讨论的潜在可能之后，就变得非常简单。
+          因为雅思写作作为学术写作，更需要讨论<span class="hl">社会民生</span>的话题——
+          把答案局限在个体层面 vs 放大到商家的社会群体层面，<span class="font-bold">后者质量会明显高于前者</span>。
+        </p>
+        <div class="bg-cream border-l-4 border-rust p-5 my-5 rounded-r-lg">
+          <p class="text-sm text-ink/80 leading-relaxed">
+            仅放在个体或消费者立场上，容易想到的只有"见过够多广告所以没兴趣了"——这种内容想进一步拓展成<span class="font-bold">有足够篇幅、每句之间逻辑不重复</span>的高级学术感论证是极困难的。
+          </p>
+          <p class="text-sm text-ink/70 leading-relaxed mt-3">
+            不是写作能力有问题，而是这种视角更多讨论的是心理——而心理本身就是极为抽象的概念，"Broaden one's horizon" / "Good for mental health" 很难拓展得详细具体。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 9 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">09</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.11 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">思路 × 视角 排列组合</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          在有了 9 个万能思路之后，又知道每道题至少包含 2 个不同视角，就可以将<span class="hl">思路和视角进行排列组合</span>。
+        </p>
+        <div class="bg-ink text-paper rounded-2xl p-8 my-6 text-center">
+          <div class="text-xs tracking-widest text-sage mb-3">组合公式</div>
+          <div class="font-en text-4xl md:text-5xl font-semibold">
+            <span class="text-ochre">9</span> <span class="text-paper/60">×</span> <span class="text-ochre">3</span> <span class="text-paper/60">=</span> <span class="text-paper">27</span>
+          </div>
+          <div class="text-sm text-paper/70 mt-3">条潜在观点。即使砍掉一半不适合的，也还能剩十几个。</div>
+        </div>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          可以做初步筛选——比如心理相关的内容往往比较空洞、难以充分展开，那把心理的观点全部排除掉，不给自己添麻烦。
+        </p>
+        <p class="text-sm text-ink/70 leading-relaxed">
+          在第一道犯罪类题目中，"安全"和"钱"两个思路的展开篇幅也有区别——后者在草稿阶段的论证内容篇幅就远多于安全。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 10 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">10</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.12 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">优中选优：放弃"只能想到一行"的那个</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          在有更多可选观点的情况下，<span class="hl">放弃"安全"这个只能想到一行的观点</span>，转而优先考虑"钱"对应的观点如何优化，将其从草稿变成更高质量的答案。
+        </p>
+        <div class="bg-white border-2 border-ink rounded-xl p-5 my-5">
+          <div class="text-xs tracking-widest text-ink font-bold mb-2">整体选择原则</div>
+          <p class="font-serif text-lg text-ink">尽可能选自己<span class="hl">有更多话可说的那个观点</span>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 11 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">11</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.13 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">学术高级感：从"灌水"到"言简意赅"</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          雅思写作作为学术化考试，<span class="hl">学术高级感</span>是核心要求——
+          既包括更多进行<span class="font-bold">社会民生</span>而非家长里短探讨的宏观立意，
+          也包括句子的<span class="font-bold">言简意赅</span>和<span class="font-bold">句式风格</span>等微观细节。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          难点在于大部分同学很难保证自己每一句话都没有任何多余信息——<span class="hl">往论证中注水是影响学术高级感的重要因素</span>，也是最难在短期解决的问题。
+        </p>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          既然知道话中有大量冗余信息，就可以<span class="font-bold">疯狂压缩</span>，让话语变得更加精简。
+          这种压缩的前提是——我们要找到那些本来就<span class="hl">能聊很多话</span>的论点和论证，这样才不会在压缩之后导致字数不够。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 12 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">12</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.14 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">凝练示范：从草稿到 8.5 分范文</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          当我们本身就有十几个潜在观点、并且不乏像犯罪类例题中"政府开销"那样的长篇大论内容时，<span class="hl">就可以通过语言的精简和凝练，将其质量提升一个台阶</span>。
+        </p>
+        <p class="text-sm text-muted mb-3">"钱"相关草稿的中英文凝练示范：</p>
+
+        <div class="bg-cream border border-line rounded-xl p-6 my-5">
+          <div class="text-xs tracking-widest text-rust font-bold mb-2">原文（草稿）</div>
+          <p class="text-sm text-ink/80 leading-relaxed mb-4">
+            从政府开销的角度讲，如果对所有犯罪都具体情况具体分析，而非采取统一的量刑标准，就需要政府增加司法从业人员的数量，并且每位法律工作者所花的时间也会更多，这将让政府产生更多开销。但对于大部分国家和社会来说，有限的财政预算倾斜在此处并不合理，也不现实。
+          </p>
+          <div class="border-t border-dashed border-line my-4"></div>
+          <div class="text-xs tracking-widest text-moss font-bold mb-2">凝练后（中文）</div>
+          <p class="font-serif text-base text-ink leading-relaxed mb-4">
+            对于每一个犯罪案例具体情况具体分析，将增加政府在司法部门从业人员的数量和人工成本。职能部门中的法律工作者在每一个案件所花费的时间和人工成本都会更多，但政府的开销增加在此处对于大部分国家的行政体系来说，<span class="hl">既不合理也不现实</span>。
+          </p>
+          <div class="text-xs tracking-widest text-ochre font-bold mb-2">凝练后（English version）</div>
+          <p class="font-en text-sm text-ink/80 leading-relaxed italic">
+            Handling every criminal case on an individual basis would inevitably increase the government's expenditure on the judicial system. More judges, prosecutors and other legal professionals would be required, while each case would demand significantly more time and manpower. Consequently, the additional financial burden imposed on the government would be neither practical nor sustainable for the vast majority of countries.
+          </p>
+        </div>
+        <p class="text-sm text-ink/70 leading-relaxed">
+          中文为主讲解的两点原因：① 中英兼顾会让二者质量都下降，用中文讲逻辑更清楚 ② 课程里有逐词翻译法，写中文反而是更大的优势。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 13 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">13</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.15 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">总结：三步走的底层公式</h3>
+        <div class="grid md:grid-cols-3 gap-4 my-6">
+          <div class="bg-white border border-line rounded-xl p-5">
+            <div class="text-rust font-en text-2xl font-semibold mb-2">①</div>
+            <div class="font-serif font-bold text-ink mb-1">根源</div>
+            <p class="text-sm text-ink/70">把论点作为文章一切发散的根源</p>
+          </div>
+          <div class="bg-white border border-line rounded-xl p-5">
+            <div class="text-rust font-en text-2xl font-semibold mb-2">②</div>
+            <div class="font-serif font-bold text-ink mb-1">发散</div>
+            <p class="text-sm text-ink/70">将万能思路和视角进行排列组合</p>
+          </div>
+          <div class="bg-white border border-line rounded-xl p-5">
+            <div class="text-rust font-en text-2xl font-semibold mb-2">③</div>
+            <div class="font-serif font-bold text-ink mb-1">收敛</div>
+            <p class="text-sm text-ink/70">优中选优，找到最能拿高分的那一项</p>
+          </div>
+        </div>
+        <p class="text-base text-ink/80 leading-relaxed">
+          即使是草稿内容，对大部分同学来说已经可以直接用了；
+          但按照这个流程练一段时间，把草稿转变成 8.5 分范文是完全可行的。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+
+<!-- Chapter 14 -->
+<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
+  <div class="reveal">
+    <div class="flex items-start gap-6">
+      <div class="chapter-num text-7xl md:text-8xl leading-none">14</div>
+      <div class="flex-1 pt-3">
+        <div class="text-xs tracking-widest text-muted mb-2">P.16 / 16</div>
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">最终回响：主观能动性 & 知识体系</h3>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          想要提高自己文章的论点水平以及后续展开的论证质量，更应该做的就是
+          <span class="hl">将万能思路和不同视角进行排列组合式的思维发散</span>，
+          通过这种方式找到最适合自己的内容，将其落笔呈现在卷面上，
+          <span class="font-bold">发挥出写作作为主观题最大的主观能动性</span>，而不是落入自己最不擅长写的观点的陷阱和误区。
+        </p>
+        <div class="pull-quote text-lg text-ink my-5">
+          对于主观题来说，只要话题是我们足够擅长的，每一位考生都可以变成<span class="font-bold">当代鲁迅</span>（English version）。
+        </div>
+        <p class="text-base text-ink/80 leading-relaxed mb-4">
+          在雅思备考过程中，有很多类似这样的小细节是被大家所忽略的。
+          我们往往看重的是一篇文章包含几个自然段以及每个自然段中有哪些信息，
+          但这其实都是将一篇高质量的范文拆解之后得到的<span class="font-bold">学法</span>。
+          大部分同学需要的反而是<span class="hl">从无到有的构建过程</span>，而不是从有拆无的细节知识点。
+        </p>
+        <div class="bg-ink text-paper rounded-2xl p-8 my-6">
+          <p class="font-serif text-lg leading-relaxed">
+            这正是这篇笔记发布在这里的初衷——分享教学理念，对自学者起到启发和帮助；
+            对需要上课的同学，希望大家是在<span class="hl">认可这种方法之后，觉得适合自己再报名</span>，
+            而不是被那些容易被营销包装的师资背景等信息裹挟。
+          </p>
+          <p class="text-sm text-paper/70 mt-4 italic">最终决定我们学习效果的，永远是合理的知识体系。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 总结流程图 ============== -->
+<section class="max-w-5xl mx-auto px-6 my-24">
+  <div class="reveal">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-3 mb-4">
+        <div class="ornament"></div>
+        <div class="text-sm text-muted tracking-widest">METHOD FLOW</div>
+        <div class="ornament"></div>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl font-black text-ink">方法流 · 一图看懂</h2>
+    </div>
+
+    <div class="bg-white border-2 border-ink rounded-2xl p-8 md:p-12">
+      <div class="grid md:grid-cols-5 gap-4 items-stretch">
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-ink text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">1</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">想不出观点</div>
+          <div class="text-xs text-muted">或观点空洞低质</div>
+        </div>
+        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-ochre text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">2</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">万能思路</div>
+          <div class="text-xs text-muted">9 个池子硬套</div>
+        </div>
+        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-ochre text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">3</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">切换视角</div>
+          <div class="text-xs text-muted">每题至少 2 个</div>
+        </div>
+      </div>
+
+      <div class="flex justify-center my-6">
+        <div class="text-2xl text-ochre">↓</div>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-4 items-stretch">
+        <div class="md:col-start-2 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-moss text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">4</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">排列组合</div>
+          <div class="text-xs text-muted">9 × 3 = 27 潜在观点</div>
+        </div>
+        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-moss text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">5</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">优中选优</div>
+          <div class="text-xs text-muted">选话多的那个</div>
+        </div>
+        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-rust text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">6</div>
+          <div class="font-serif font-bold text-ink text-base mb-1">言简意赅</div>
+          <div class="text-xs text-muted">凝练 → 8.5 分</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 收尾 ============== -->
+<footer class="max-w-5xl mx-auto px-6 pb-20">
+  <div class="reveal text-center">
+    <div class="ornament inline-block mb-6"></div>
+    <p class="font-serif text-2xl md:text-3xl text-ink leading-relaxed max-w-3xl mx-auto">
+      写作的根源是<span class="hl">论点</span>，<br/>
+      论点的根源是<span class="hl">可聊性</span>，<br/>
+      可聊性的根源是<span class="hl">思路 × 视角</span>。
+    </p>
+    <p class="text-sm text-muted mt-8 tracking-widest">— END OF NOTES —</p>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

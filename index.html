@@ -1,751 +1,1304 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>雅思写作论点和论证展开方法 · 图文总结</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        ink:    '#1a2e25',
-        paper:  '#f7f3eb',
-        cream:  '#efe8da',
-        moss:   '#3a5a40',
-        sage:   '#8aa888',
-        ochre:  '#d97757',
-        rust:   '#b04a2f',
-        muted:  '#7a7066',
-        line:   '#d8cfbe',
-      },
-      fontFamily: {
-        serif: ['"Noto Serif SC"', 'Lora', 'Georgia', 'serif'],
-        sans:  ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
-        en:    ['Lora', 'Georgia', 'serif'],
-      },
-    }
-  }
-}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思写作笔记 · Simon Task 1 & 2</title>
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: '"Noto Sans SC"', system-ui, sans-serif; background: #f7f3eb; color: #1a2e25; }
-  .font-serif { font-family: '"Noto Serif SC"', Lora, Georgia, serif; }
-
-  /* 纸张纹理 */
-  .paper-grain {
-    background-image:
-      radial-gradient(rgba(26,46,37,0.025) 1px, transparent 1px),
-      radial-gradient(rgba(26,46,37,0.02) 1px, transparent 1px);
-    background-size: 24px 24px, 13px 13px;
-    background-position: 0 0, 6px 6px;
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1e40af;
+    --accent: #f59e0b;
+    --accent-light: #fef3c7;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --green: #10b981;
+    --green-light: #d1fae5;
+    --red: #ef4444;
+    --red-light: #fee2e2;
+    --sidebar-w: 280px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
   }
 
-  /* 卡片进入动画 */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-  .reveal-1 { transition-delay: 0.05s; }
-  .reveal-2 { transition-delay: 0.15s; }
-  .reveal-3 { transition-delay: 0.25s; }
-
-  /* 章节编号大字 */
-  .chapter-num {
-    font-family: Lora, Georgia, serif;
-    font-weight: 500;
-    font-style: italic;
-    color: #b04a2f;
-    letter-spacing: -0.02em;
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: #1e293b;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 24px 0;
   }
-
-  /* 关键引文左竖线 */
-  .pull-quote {
-    border-left: 3px solid #d97757;
-    padding-left: 1.25rem;
-    font-family: '"Noto Serif SC"', serif;
-    font-weight: 500;
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+  .sidebar-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 24px 20px;
+    border-bottom: 1px solid #334155;
+    margin-bottom: 16px;
   }
-
-  /* 高亮关键词 */
-  .hl { background: linear-gradient(transparent 60%, rgba(217,119,87,0.28) 60%); padding: 0 0.15em; }
-  .hl-green { background: linear-gradient(transparent 60%, rgba(58,90,64,0.22) 60%); padding: 0 0.15em; }
-
-  /* 标签徽章 */
-  .badge {
-    display: inline-block;
-    padding: 0.15rem 0.65rem;
-    border: 1px solid #1a2e25;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    color: #1a2e25;
+  .sidebar-title span { color: var(--accent); }
+  .nav-section { margin-bottom: 20px; }
+  .nav-section-title {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 24px 8px;
   }
-  .badge-solid {
-    background: #1a2e25;
-    color: #f7f3eb;
-  }
-  .badge-ochre {
-    border-color: #d97757;
-    color: #b04a2f;
-  }
-
-  /* 9个万能思路 chip */
-  .chip {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 0.45rem 0.9rem;
-    background: #fff;
-    border: 1px solid #d8cfbe;
-    border-radius: 0.6rem;
-    font-size: 0.85rem;
-    color: #1a2e25;
-    transition: all 0.2s;
-  }
-  .chip:hover { transform: translateY(-2px); border-color: #d97757; color: #b04a2f; }
-  .chip-active { background: #1a2e25; color: #f7f3eb; border-color: #1a2e25; }
-
-  /* 流程箭头 */
-  .arrow-down::after {
-    content: '';
+  .nav-item {
     display: block;
-    width: 1px;
-    height: 24px;
-    background: #1a2e25;
-    margin: 12px auto 0;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 8px 24px;
+    font-size: 14px;
+    transition: all .2s;
+    border-left: 3px solid transparent;
+  }
+  .nav-item:hover {
+    color: #fff;
+    background: #334155;
+    border-left-color: var(--primary);
+  }
+  .nav-item.active {
+    color: #fff;
+    background: #334155;
+    border-left-color: var(--accent);
   }
 
-  /* 进度条 */
-  .progress-dot { width: 8px; height: 8px; border-radius: 999px; background: #d8cfbe; transition: all 0.3s; }
-  .progress-dot.active { background: #b04a2f; transform: scale(1.4); }
+  /* Main content */
+  .main {
+    margin-left: var(--sidebar-w);
+    padding: 40px 48px;
+    max-width: 960px;
+  }
 
-  /* 装饰小图 */
-  .ornament {
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    padding: 48px 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+  }
+  .hero h1 { font-size: 32px; margin-bottom: 12px; }
+  .hero p { font-size: 16px; opacity: 0.9; }
+  .hero-tags {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 56px;
+    scroll-margin-top: 24px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-icon.task2 { background: var(--primary-light); }
+  .section-icon.task1 { background: var(--accent-light); }
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  /* Question block */
+  .question-box {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 16px;
+    font-style: italic;
+    color: var(--primary-dark);
+    font-size: 15px;
+  }
+
+  /* Essay structure */
+  .struct-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .struct-item {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .struct-item-num {
     display: inline-block;
-    width: 6px; height: 6px;
-    background: #d97757;
-    transform: rotate(45deg);
-    margin: 0 0.5rem;
-    vertical-align: middle;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 6px;
+  }
+  .struct-item-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .struct-item-time {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 2px;
   }
 
-  /* 选择器 */
-  ::selection { background: #d97757; color: #fff; }
+  /* Essay paragraphs */
+  .essay-para {
+    margin-bottom: 16px;
+  }
+  .essay-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .essay-label.overview { color: var(--accent); background: var(--accent-light); }
+  .essay-label.conclusion { color: var(--green); background: var(--green-light); }
+  .essay-text {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  /* Vocab box */
+  .vocab-box {
+    background: var(--green-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+  .vocab-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 8px;
+  }
+  .vocab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .vocab-tag {
+    background: #fff;
+    color: #065f46;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    border: 1px solid #6ee7b7;
+  }
+
+  /* Tip box */
+  .tip-box {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 14px;
+    color: #92400e;
+  }
+  .tip-box strong { color: #78350f; }
+
+  /* Wrong/Right examples */
+  .example-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .example-wrong, .example-right {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+  }
+  .example-wrong {
+    background: var(--red-light);
+    border: 1px solid #fca5a5;
+  }
+  .example-right {
+    background: var(--green-light);
+    border: 1px solid #6ee7b7;
+  }
+  .example-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .example-wrong .example-label { color: var(--red); }
+  .example-right .example-label { color: var(--green); }
+
+  /* Chart type badge */
+  .chart-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: #92400e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  /* Info table */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .info-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .info-table th:first-child { border-radius: 8px 0 0 0; }
+  .info-table th:last-child { border-radius: 0 8px 0 0; }
+  .info-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-table tr:nth-child(even) td { background: var(--bg); }
+
+  /* Grouping diagram */
+  .group-diagram {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .group-item {
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .group-up { background: var(--red-light); color: #991b1b; }
+  .group-down { background: var(--green-light); color: #065f46; }
+  .group-flat { background: var(--primary-light); color: var(--primary-dark); }
+  .group-peak { background: var(--accent-light); color: #92400e; }
+
+  /* Mobile */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 200;
+    background: #1e293b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 44px; height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  @media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); transition: transform .3s; }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; padding: 20px 16px; padding-top: 70px; }
+    .menu-toggle { display: block; }
+    .hero { padding: 32px 24px; }
+    .hero h1 { font-size: 24px; }
+    .example-pair { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
-<body class="paper-grain">
+<body>
 
-<!-- ============== HERO ============== -->
-<header class="relative max-w-5xl mx-auto px-6 pt-20 pb-16">
-  <div class="reveal">
-    <div class="flex items-center gap-3 mb-6">
-      <span class="badge badge-solid">写作方法论</span>
-      <span class="text-xs tracking-widest text-muted uppercase">IELTS Writing · Argumentation</span>
-    </div>
-    <h1 class="font-serif text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-ink mb-6">
-      从根源解决<br/>
-      雅思写作的<span class="hl">论点</span>与<span class="hl">论证展开</span>
-    </h1>
-    <p class="text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
-      一份基于 <span class="font-en italic">14</span> 张原图笔记梳理的图文总结。
-      核心只有一句话——<span class="font-serif font-bold text-ink">论点是文章一切发散的根源</span>。
-      围绕这一原点，用"万能思路 × 切换视角"做排列组合，再优中选优。
-    </p>
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<!-- Sidebar -->
+<nav class="sidebar">
+  <div class="sidebar-title">雅思写作 <span>笔记</span></div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Task 2 大作文</div>
+    <a class="nav-item" href="#t2-overview">概述与时间分配</a>
+    <a class="nav-item" href="#t2-discussion">Discussion 讨论类</a>
+    <a class="nav-item" href="#t2-opinion">Opinion 观点类</a>
+    <a class="nav-item" href="#t2-problem">Problem & Solution</a>
+    <a class="nav-item" href="#t2-twopart">Two-part Question</a>
+    <a class="nav-item" href="#t2-conclusion">Conclusion 技巧</a>
   </div>
 
-  <div class="reveal reveal-2 mt-12 grid grid-cols-3 gap-4 max-w-3xl">
-    <div class="border-t-2 border-ink pt-3">
-      <div class="font-en text-3xl font-semibold text-rust">9</div>
-      <div class="text-sm text-muted mt-1">个万能思路</div>
-    </div>
-    <div class="border-t-2 border-ink pt-3">
-      <div class="font-en text-3xl font-semibold text-rust">2<span class="text-base text-muted">+</span></div>
-      <div class="text-sm text-muted mt-1">个独立视角</div>
-    </div>
-    <div class="border-t-2 border-ink pt-3">
-      <div class="font-en text-3xl font-semibold text-rust">27</div>
-      <div class="text-sm text-muted mt-1">种潜在观点组合</div>
+  <div class="nav-section">
+    <div class="nav-section-title">Task 1 小作文</div>
+    <a class="nav-item" href="#t1-overview">写作结构</a>
+    <a class="nav-item" href="#t1-line">Line Chart 线图</a>
+    <a class="nav-item" href="#t1-bar">Bar Chart 柱状图</a>
+    <a class="nav-item" href="#t1-pie">Pie Chart 饼图</a>
+    <a class="nav-item" href="#t1-table">Table 表格</a>
+    <a class="nav-item" href="#t1-mixed">Mixed Chart 混合图</a>
+    <a class="nav-item" href="#t1-process">Process 流程图</a>
+    <a class="nav-item" href="#t1-map">Map 地图题</a>
+  </div>
+</nav>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>雅思写作笔记 · Simon Task 1 & 2</h1>
+    <p>涵盖大作文四种题型 + 小作文七种图表类型，含范文结构与核心词汇</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📝 4种大作文题型</span>
+      <span class="hero-tag">📊 7种小作文图表</span>
+      <span class="hero-tag">🔑 核心词汇表</span>
+      <span class="hero-tag">✅ 范文示范</span>
     </div>
   </div>
 
-  <div class="reveal reveal-3 mt-16 flex items-center gap-4">
-    <div class="ornament"></div>
-    <div class="text-sm text-muted tracking-widest">CHAPTER INDEX</div>
-    <div class="ornament"></div>
-  </div>
-</header>
+  <!-- ==================== TASK 2 ==================== -->
 
-<!-- ============== 9个万能思路预览 ============== -->
-<section class="max-w-5xl mx-auto px-6 mb-20">
-  <div class="reveal bg-white border border-line rounded-2xl p-8">
-    <div class="flex items-baseline justify-between mb-5">
-      <h2 class="font-serif text-2xl font-bold text-ink">九个万能思路</h2>
-      <span class="text-xs text-muted tracking-widest">CORE IDEAS POOL</span>
+  <!-- T2 Overview -->
+  <div class="section" id="t2-overview">
+    <div class="section-header">
+      <div class="section-icon task2">📋</div>
+      <div>
+        <div class="section-title">Task 2 概述</div>
+        <div class="section-subtitle">时间分配与四种题型</div>
+      </div>
     </div>
-    <p class="text-sm text-muted mb-5">想不出观点时，直接从这一池子里捞，扔到题目上，再硬着头皮想怎么展开。</p>
-    <div class="flex flex-wrap gap-2.5">
-      <span class="chip chip-active">安全</span>
-      <span class="chip chip-active">钱</span>
-      <span class="chip">时间</span>
-      <span class="chip">健康</span>
-      <span class="chip">兴趣</span>
-      <span class="chip">能力</span>
-      <span class="chip">社交</span>
-      <span class="chip">科技</span>
-      <span class="chip">环境</span>
-    </div>
-  </div>
-</section>
 
-<!-- ============== 14 个章节 ============== -->
-
-<!-- Chapter 1 -->
-<section class="max-w-5xl mx-auto px-6 mb-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">01</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.4 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">论点是文章一切发散的根源</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          解决"想不出观点 / 观点空洞"问题的根源性方法，是先意识到——
-          <span class="hl">论点的选择决定了整篇文章的质量上限</span>。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          我们选正方还是反方，<span class="font-bold">完全取决于哪一方的观点更有可聊性</span>。
-          写出什么质量（篇幅、学术化程度）的论证，也取决于论点本身——
-          是不是自己有很多话想说、并且擅长的话题；至于论据，反倒是次要的。
-        </p>
-        <div class="pull-quote text-lg text-ink my-5">
-          很多同学"只能将空洞的观点用车轱辘话反复说"——这就是提高的第一步：先看清自己的问题长什么样。
+    <div class="card">
+      <div class="struct-grid">
+        <div class="struct-item">
+          <div class="struct-item-num">1</div>
+          <div class="struct-item-label">计划 Planning</div>
+          <div class="struct-item-time">10 min</div>
         </div>
-        <div class="flex gap-2 flex-wrap mt-4">
-          <span class="badge">根源论</span>
-          <span class="badge">误区识别</span>
-          <span class="badge badge-ochre">核心定理</span>
+        <div class="struct-item">
+          <div class="struct-item-num">2</div>
+          <div class="struct-item-label">引言 Introduction</div>
+          <div class="struct-item-time">5 min</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">3</div>
+          <div class="struct-item-label">主体段 Body ×2</div>
+          <div class="struct-item-time">10 min × 2</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">4</div>
+          <div class="struct-item-label">结论 Conclusion</div>
+          <div class="struct-item-time">5 min</div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>总计 30 分钟</strong>，预留 10 分钟检查。规划时间占比高，值得投入。</div>
+    </div>
+
+    <div class="card">
+      <p style="font-weight:600; margin-bottom:12px;">引言结构（2句话，5分钟）</p>
+      <p style="font-size:14px; color:var(--text-light);">① Introduce the topic（引入话题）<br>② Give a general answer（给出总体回答）</p>
+      <div class="tip-box" style="margin-top:12px;">
+        <strong>Linking words 不提升词汇分数</strong>，考官看重的是 <strong>topic vocabulary</strong>（话题词汇）。
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="font-weight:600; margin-bottom:12px;">四大题型</p>
+      <table class="info-table">
+        <thead><tr><th>题型</th><th>核心任务</th><th>人称</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Discussion</strong></td><td>讨论双方观点 + 给出自己意见</td><td>可用第一人称</td></tr>
+          <tr><td><strong>Opinion</strong></td><td>同意或不同意，从开头到结尾保持一致</td><td>必须明确"我"的观点</td></tr>
+          <tr><td><strong>Problem & Solution</strong></td><td>分析原因 + 提出解决方案</td><td>可用 I believe / In my opinion</td></tr>
+          <tr><td><strong>Two-part Question</strong></td><td>回答两个关联问题</td><td>可用第一人称</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- T2 Discussion -->
+  <div class="section" id="t2-discussion">
+    <div class="section-header">
+      <div class="section-icon task2">💬</div>
+      <div>
+        <div class="section-title">Discussion 讨论类</div>
+        <div class="section-subtitle">Discuss both views and give your own opinion</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="question-box">
+        Some people think that a sense of competition in children should be encouraged. Others believe that children who are taught to co-operate rather than compete become more useful adults. Discuss both views and give your own opinion.
+      </div>
+
+      <div class="struct-grid">
+        <div class="struct-item">
+          <div class="struct-item-num">1</div>
+          <div class="struct-item-label">Introduction</div>
+          <div class="struct-item-time">competition or co-operation?</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">2</div>
+          <div class="struct-item-label">Why encourage competition</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">3</div>
+          <div class="struct-item-label">Why teach co-operation (my view)</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">4</div>
+          <div class="struct-item-label">Conclusion</div>
+        </div>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">People have different views about whether children should be taught to be competitive or co-operative. While a spirit of competition can sometimes be useful in life, I believe that the ability to co-operate is more important.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 1 — 竞争的好处</span>
+        <p class="essay-text">On the one hand, competition can be a great source of motivation for children. When teachers use games or prizes to introduce an element of competitiveness into lessons, it can encourage children to work harder to outdo the other pupils in the class. This kind of healthy rivalry may help to build children's self confidence, while pushing them to work independently and progress more quickly. When these children leave school, their confidence and determination will help them in competitive situations such as job interviews.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 2 — 合作更重要</span>
+        <p class="essay-text">On the other hand, it is perhaps even more important to prepare children for the many aspects of adult life that require co-operation. In the workplace, adults are expected to work in teams, follow instructions given by their superiors, or supervise and support the more junior members of staff. Team collaboration skills are much more useful than a competitive determination to win. Instead of promoting the idea that people are either winners or losers, teachers could show children that they gain more from working together.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label conclusion">Conclusion</span>
+        <p class="essay-text">In conclusion, I can understand why people might want to encourage competitiveness in children, but it seems to me that a co-operative attitude is much more desirable in adult life.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 重点词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">a spirit of competition</span>
+          <span class="vocab-tag">a source of motivation</span>
+          <span class="vocab-tag">introduce an element of competitiveness</span>
+          <span class="vocab-tag">outdo other pupils</span>
+          <span class="vocab-tag">healthy rivalry</span>
+          <span class="vocab-tag">build self confidence</span>
+          <span class="vocab-tag">determination</span>
+          <span class="vocab-tag">aspects of adult life</span>
+          <span class="vocab-tag">superiors</span>
+          <span class="vocab-tag">junior members of staff</span>
+          <span class="vocab-tag">team collaboration skills</span>
+          <span class="vocab-tag">attitude that schools should foster</span>
+          <span class="vocab-tag">a co-operative attitude is more desirable</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T2 Opinion -->
+  <div class="section" id="t2-opinion">
+    <div class="section-header">
+      <div class="section-icon task2">⚖️</div>
+      <div>
+        <div class="section-title">Opinion 观点类</div>
+        <div class="section-subtitle">To what extent do you agree or disagree?</div>
+      </div>
+    </div>
 
-<!-- Chapter 2 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">02</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.5 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">万能思路：观点荒漠里的救生圈</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          接下来要解决的是<span class="hl">想不出观点 + 论点展开空洞低质</span>两个问题，都可以从<span class="font-bold">思路和角度</span>两个层面入手。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          如果连观点本身都想不到，<span class="hl-green">最直接的方式就是用万能思路</span>。这不是靠社会阅历找到对应方向，而是把万能思路直接"扔"在题目上，再硬着头皮想怎么展开。
-        </p>
-        <div class="bg-cream border-l-4 border-ochre p-5 my-5 rounded-r-lg">
-          <div class="text-xs tracking-widest text-rust mb-2 font-bold">例题</div>
-          <p class="font-serif text-lg text-ink leading-relaxed">
-            "你认为是否应该将所有的同类型犯罪采取完全相同的量刑标准？"
-          </p>
-          <p class="text-sm text-muted mt-2">→ 这道犯罪类难题，对不常接触的彦祖和热巴来说就是用社会阅历很难回答的题目。<br/>
-          → 把上面的万能思路直接扔在这道题上即可。</p>
-        </div>
-        <div class="flex gap-2 flex-wrap mt-4">
-          <span class="badge">万能思路</span>
-          <span class="badge">9个池子</span>
-          <span class="badge badge-ochre">硬套法</span>
+    <div class="card">
+      <div class="tip-box">
+        <strong>核心特征：</strong>题目出现 "do you agree or disagree" 时即为观点作文，关键在于询问"你"的个人观点。<br>
+        <strong>常见误区：</strong>许多学生错误地讨论他人观点（如 "some people think..."），而将自己的观点仅放在结尾处。<br>
+        <strong>正确做法：</strong>个人观点必须从开头到结论保持清晰一致，在引言、主体和结论中都要明确表达。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="question-box">
+        The money spent by governments on space programmes would be better spent on vital public services such as schools and hospitals. To what extent do you agree or disagree?
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">Governments in some countries spend large amounts of money on space exploration programmes. I completely agree with the idea that these are a waste of money, and that the funds should be allocated to public services.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 1 — 太空项目应停止</span>
+        <p class="essay-text">There are several reasons why space programmes should be abandoned. Firstly, it is extremely expensive to train scientists and other staff involved with space missions, and facilities and equipment also come at a huge cost to the government. Secondly, these programmes do not benefit normal people in our daily lives; they are simply vanity projects for politicians. Finally, many missions to space fail completely, and the smallest technological error can cost astronauts their lives. The Challenger space shuttle disaster showed us that space travel is extremely dangerous.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 2 — 公共服务更重要</span>
+        <p class="essay-text">I believe that the money from space programmes should go to vital public services instead. It is much cheaper to train doctors, teachers, police and other public service workers than it is to train astronauts. Furthermore, public servants do jobs that have a positive impact on every member of society. For example, we all use schools, hospitals and roads, and we all need the security that the police provide. If governments reallocated the money spent on space travel and research, many thousands of people could be lifted out of poverty or given a better quality of life.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label conclusion">Conclusion</span>
+        <p class="essay-text">In conclusion, my view is that governments should spend money on services that benefit all members of society, and it is wrong to waste resources on projects that do not improve our everyday lives.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 重点词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">space programmes / exploration / missions</span>
+          <span class="vocab-tag">funds should be allocated</span>
+          <span class="vocab-tag">should be abandoned</span>
+          <span class="vocab-tag">facilities and equipment come at a huge cost</span>
+          <span class="vocab-tag">vanity projects for politicians</span>
+          <span class="vocab-tag">can cost astronauts their lives</span>
+          <span class="vocab-tag">space shuttle disaster</span>
+          <span class="vocab-tag">public servants</span>
+          <span class="vocab-tag">a positive impact on every member of society</span>
+          <span class="vocab-tag">if governments reallocated</span>
+          <span class="vocab-tag">could be lifted out of poverty</span>
+          <span class="vocab-tag">given a better quality of life</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T2 Problem & Solution -->
+  <div class="section" id="t2-problem">
+    <div class="section-header">
+      <div class="section-icon task2">🔧</div>
+      <div>
+        <div class="section-title">Problem & Solution</div>
+        <div class="section-subtitle">分析原因 + 提出解决方案</div>
+      </div>
+    </div>
 
-<!-- Chapter 3 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">03</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.5 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">实战：安全和钱两个思路的展开</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          把万能思路强行扔上去之后，再想怎么展开，就能找到一些破题思路。
-        </p>
-        <div class="grid md:grid-cols-2 gap-4 my-5">
-          <div class="bg-white border border-line rounded-xl p-5">
-            <div class="text-xs tracking-widest text-rust font-bold mb-2">思路 · 安全</div>
-            <p class="text-sm text-ink/80 leading-relaxed">
-              从安全的角度讲，对所有犯罪采取严格且统一的量刑标准，可以促进社会的安全和稳定。
-            </p>
-          </div>
-          <div class="bg-white border border-line rounded-xl p-5">
-            <div class="text-xs tracking-widest text-rust font-bold mb-2">思路 · 钱</div>
-            <p class="text-sm text-ink/80 leading-relaxed">
-              从政府开销的角度讲，对所有犯罪都具体情况具体分析而非统一量刑，就需要政府增加司法从业人员的数量、每位法律工作者所花时间更多 → 财政预算倾斜不合理、不现实。
-            </p>
-          </div>
-        </div>
-        <div class="pull-quote text-base text-ink my-5">
-          PS：并不一定非要让万能思路和正方产生火花。比如这里"钱"对应的恰恰是反方思路——立场选择取决于哪一方<span class="font-bold">更有话可聊</span>。方法要灵活。
-        </div>
-        <div class="flex gap-2 flex-wrap mt-4">
-          <span class="badge">灵活改立场</span>
-          <span class="badge">话多优先</span>
+    <div class="card">
+      <div class="tip-box">
+        <strong>基本结构：</strong>四段式 — 引言段、问题原因段、解决方案段、结论段<br>
+        <strong>题目特征：</strong>通常包含 "What do you think are the causes?" 和 "What solutions can you suggest?"
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="question-box">
+        In many countries schools have severe problems with student behaviour. What do you think are the causes of this? What solutions can you suggest?
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">It is true that punishments do not always deter the criminals from committing more crimes. There are several reasons why offenders repeatedly break the law, but governments could certainly take steps to address this issue.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 1 — 三大原因</span>
+        <p class="essay-text">In my opinion, three main factors are to blame for the way young people behave at school nowadays. Firstly, modern parents tend to be too lenient or permissive. Many children become accustomed to getting whatever they want, and they find it difficult to accept the demands of teachers or the limits imposed on them by school rules. Secondly, if teachers cannot control their students, there must be an issue with the quality of classroom management training or support within schools. Finally, children are influenced by the behaviour of celebrities, many of whom set the example that success can be achieved without finishing school.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 2 — 解决方案</span>
+        <p class="essay-text">Student behaviour can certainly be improved. I believe that the change must start with parents, who need to be persuaded that it is important to set firm rules for their children. When children misbehave or break the rules, parents should use reasonable punishments to demonstrate that actions have consequences. Also, schools could play an important role in training both teachers and parents to use effective disciplinary techniques. At the same time, famous people need to understand the responsibility that they have to act as role models to children.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label conclusion">Conclusion</span>
+        <p class="essay-text">In conclusion, schools will continue to face discipline problems unless parents, teachers and public figures set clear rules and demonstrate the right behaviour themselves.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 重点词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">steps can be taken to tackle the problem</span>
+          <span class="vocab-tag">three main factors are to blame</span>
+          <span class="vocab-tag">parents tend to be too lenient or permissive</span>
+          <span class="vocab-tag">children become accustomed to</span>
+          <span class="vocab-tag">limits imposed on them</span>
+          <span class="vocab-tag">quality of classroom management</span>
+          <span class="vocab-tag">celebrities / famous people / public figures</span>
+          <span class="vocab-tag">set an example</span>
+          <span class="vocab-tag">set firm rules</span>
+          <span class="vocab-tag">reasonable punishments</span>
+          <span class="vocab-tag">effective disciplinary techniques</span>
+          <span class="vocab-tag">responsibility to act as role models</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T2 Two-part -->
+  <div class="section" id="t2-twopart">
+    <div class="section-header">
+      <div class="section-icon task2">❓</div>
+      <div>
+        <div class="section-title">Two-part Question</div>
+        <div class="section-subtitle">回答两个关联问题</div>
+      </div>
+    </div>
 
-<!-- Chapter 4 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">04</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.6 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">切换视角：每道题至少藏两个视角</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          解决论点和论点扩充数量不足的第二个方法——<span class="hl">切换视角</span>。
-          雅思写作的题干中往往隐藏着不同的视角，未必会以文字形式直观呈现，但几乎每道题都至少包含两个独立不同的视角。
-        </p>
-        <div class="bg-cream border border-line rounded-xl p-5 my-5">
-          <div class="text-xs tracking-widest text-rust font-bold mb-3">话题 × 默认视角</div>
-          <ul class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink/80">
-            <li><span class="font-bold">教育类</span>：学校 / 学生和老师</li>
-            <li><span class="font-bold">社会类</span>：政府和老百姓</li>
-            <li><span class="font-bold">家庭类</span>：父母和子女</li>
-            <li><span class="font-bold">职场类</span>：资本和打工人</li>
-            <li><span class="font-bold">消费类</span>：商家和消费者</li>
-          </ul>
-        </div>
-        <p class="text-sm text-ink/70 leading-relaxed">而且视角不止一种——比如教育和社会相关的话题，可以把学校、老师、学生、政府<span class="font-bold">全部</span>纳入考量。</p>
-        <div class="flex gap-2 flex-wrap mt-4">
-          <span class="badge">视角切换</span>
-          <span class="badge">跨话题组合</span>
+    <div class="card">
+      <div class="question-box">
+        News editors decide what to broadcast on television and what to print in newspapers. What factors do you think influence these decisions? Do we become used to bad news, and would it be better if more good news was reported?
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">It is true that editors have to make difficult decisions about which news stories they broadcast or publish, and their choices are no doubt influenced by a variety of factors. In my opinion, we are exposed to too much bad news, and I would welcome a greater emphasis on good news.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 1 — 影响编辑决策的因素</span>
+        <p class="essay-text">Editors face a range of considerations when deciding what news stories to focus on. Firstly, I imagine that they have to consider whether viewers or readers will be interested enough to choose their television channel or their newspaper over competing providers. Secondly, news editors have a responsibility to inform the public about important events and issues, and they should therefore prioritise stories that are in the public interest. Finally, editors are probably under some pressure from the owners who employ them. For example, a newspaper owner might have particular political views that he or she wants to promote.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Body 2 — 坏新闻太多，应多报好消息</span>
+        <p class="essay-text">It seems to me that people do become accustomed to negative news. We are exposed on a daily basis to stories about war, crime, natural disasters and tragic human suffering around the world. I believe that such repeated exposure gradually desensitises people, and we become more cynical about the world and more sceptical that we can do anything to change it. I would prefer to see more positive news stories, such as reports of the work of medical staff after a natural disaster, or the kindness of volunteers who help in their communities.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label conclusion">Conclusion</span>
+        <p class="essay-text">In conclusion, it must be extremely difficult for editors to choose which news stories to present, but I would like to see a more positive approach to this vital public service.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 重点词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">exposed to bad news</span>
+          <span class="vocab-tag">welcome a greater emphasis on good news</span>
+          <span class="vocab-tag">Editors face a range of considerations</span>
+          <span class="vocab-tag">prioritise stories in the public interest</span>
+          <span class="vocab-tag">under some pressure from the owners</span>
+          <span class="vocab-tag">promote particular political views</span>
+          <span class="vocab-tag">become accustomed to negative news</span>
+          <span class="vocab-tag">natural disasters and tragic human suffering</span>
+          <span class="vocab-tag">exposure gradually desensitises people</span>
+          <span class="vocab-tag">cynical and sceptical</span>
+          <span class="vocab-tag">inspire us all to lead better lives</span>
+          <span class="vocab-tag">a more positive approach</span>
+          <span class="vocab-tag">vital public service</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T2 Conclusion -->
+  <div class="section" id="t2-conclusion">
+    <div class="section-header">
+      <div class="section-icon task2">✅</div>
+      <div>
+        <div class="section-title">Conclusion 技巧</div>
+        <div class="section-subtitle">结尾段的通用法则</div>
+      </div>
+    </div>
 
-<!-- Chapter 5 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">05</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.7 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">视角 × 钱：从一个思路切出三个维度</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          提到"钱"，能想的不只是个人层面的省钱或花钱——
-          <span class="hl-green">对政府：</span>这笔开支是否合理 / 预算是否充足；
-          <span class="hl-green">对学校：</span>有没有足够的钱办这个活动；
-          <span class="hl-green">对学生：</span>家庭经济状况能否支撑。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          同一道题从钱的角度就能切出政府 / 学校 / 学生三个维度，对两个主体段来说，就多了一个思路的富裕。
-        </p>
-        <div class="bg-cream border-l-4 border-moss p-5 my-5 rounded-r-lg">
-          <div class="text-xs tracking-widest text-moss font-bold mb-2">新例题</div>
-          <p class="font-serif text-lg text-ink leading-relaxed">
-            "现在人们对于广告的敏感程度正在降低，这是什么原因导致的呢？"
-          </p>
-          <p class="text-sm text-muted mt-2">→ 这显然包含 <span class="font-bold">商家</span>和<span class="font-bold">消费者</span>两个不同视角。</p>
+    <div class="card">
+      <div class="tip-box">
+        <strong>结论三原则：</strong><br>
+        ① 只写 <strong>一句话</strong><br>
+        ② <strong>不引入新信息</strong><br>
+        ③ <strong>改写引言中的回答</strong>（paraphrasing to show variety）
+      </div>
+
+      <p style="font-weight:600; margin:16px 0 8px;">各题型结尾示范：</p>
+
+      <div class="essay-para">
+        <span class="essay-label">Discussion</span>
+        <p class="essay-text">In conclusion, I would argue that the advantages of using video security systems in public places do outweigh the disadvantages.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Opinion</span>
+        <p class="essay-text">In conclusion, I do not believe that any financial concessions should be made for people who choose private education.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Problem & Solution</span>
+        <p class="essay-text">In conclusion, various measures can be taken to tackle the problems that are certain to arise as the populations of countries grow older.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Two-part</span>
+        <p class="essay-text">In conclusion, music is a necessary part of human existence, and I believe that traditional music should be given more importance than international music.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TASK 1 ==================== -->
+
+  <!-- T1 Overview -->
+  <div class="section" id="t1-overview">
+    <div class="section-header">
+      <div class="section-icon task1">📊</div>
+      <div>
+        <div class="section-title">Task 1 写作结构</div>
+        <div class="section-subtitle">四段式 · Introduction → Overview → Details</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="struct-grid">
+        <div class="struct-item">
+          <div class="struct-item-num">1</div>
+          <div class="struct-item-label">Introduction</div>
+          <div class="struct-item-time">1句话 · Paraphrase the question</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">2</div>
+          <div class="struct-item-label">Overview</div>
+          <div class="struct-item-time">2句话 · Main, general points</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">3</div>
+          <div class="struct-item-label">Details 1</div>
+          <div class="struct-item-time">Group the information</div>
+        </div>
+        <div class="struct-item">
+          <div class="struct-item-num">4</div>
+          <div class="struct-item-label">Details 2</div>
+          <div class="struct-item-time">Group the information</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>为什么要分两段 Details？</strong> 这样能帮助你更好地组织和分组信息（grouping）。
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="font-weight:600; margin-bottom:12px;">两大类型</p>
+      <table class="info-table">
+        <thead><tr><th>类型</th><th>特征</th><th>分析方法</th></tr></thead>
+        <tbody>
+          <tr><td><strong>变化趋势图</strong></td><td>包含时间维度</td><td>按趋势分组：上升组 / 下降组 / 波动组 / 稳定组 / 极值组</td></tr>
+          <tr><td><strong>完全对比图</strong></td><td>无时间维度</td><td>按大小分组：最大组 / 最小组 / 相似组 / 相差组</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box" style="margin-top:12px;">
+        <strong>核心原则：</strong>从 20+ 数据中提炼 2-3 个宏观特征，避免数据堆砌。只需关注"一直最大"和"一直最小"的极端数据。
+      </div>
+    </div>
+  </div>
+
+  <!-- T1 Line Chart -->
+  <div class="section" id="t1-line">
+    <div class="section-header">
+      <div class="section-icon task1">📈</div>
+      <div>
+        <div class="section-title">Line Chart 线图</div>
+        <div class="section-subtitle">变化趋势图 · 范文示范</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="chart-badge">📈 Line Chart · 法国电力生产 (1980-2012)</div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The line graph compares the amount of electricity produced in France using four different sources of power over a period of 32 years.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">It is clear that nuclear power was by far the most important means of electricity generation over the period shown. Renewables provided the lowest amount of electricity in each year.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3</span>
+        <p class="essay-text">Nuclear power production rose dramatically to a peak of approximately 400 terawatt hours in 2005, while thermal power output fell over the same period. Nuclear overtook thermal as the primary source of electricity around 1985.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4</span>
+        <p class="essay-text">Renewable electricity production saw only a small rise to approximately 25 terawatt hours by 2012.</p>
+      </div>
+
+      <div class="tip-box">
+        <strong>优先记住三类描述：</strong>"最高级"、"对比"、"趋势"——图表作文最常用。
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">amount of electricity produced</span>
+          <span class="vocab-tag">source of / provided / generating</span>
+          <span class="vocab-tag">means of electricity generation</span>
+          <span class="vocab-tag">over a period of</span>
+          <span class="vocab-tag">by far the most important</span>
+          <span class="vocab-tag">a negligible amount</span>
+          <span class="vocab-tag">nuclear power overtook thermal power</span>
+          <span class="vocab-tag">as the primary source of</span>
+          <span class="vocab-tag">rose dramatically to a peak of</span>
+          <span class="vocab-tag">by contrast</span>
+          <span class="vocab-tag">the figure for</span>
+          <span class="vocab-tag">remained at this level</span>
+          <span class="vocab-tag">saw only a small rise</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T1 Bar Chart -->
+  <div class="section" id="t1-bar">
+    <div class="section-header">
+      <div class="section-icon task1">📊</div>
+      <div>
+        <div class="section-title">Bar Chart 柱状图</div>
+        <div class="section-subtitle">范文示范 · 手机品牌全球销量</div>
+      </div>
+    </div>
 
-<!-- Chapter 6 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">06</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.8 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">商家视角展开：把视角转过去</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          视角转向商家，可写的东西就多出不少：
-        </p>
-        <div class="bg-white border border-line rounded-xl p-6 my-5">
-          <ul class="space-y-3 text-sm text-ink/85 leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-rust font-bold font-en">A.</span>
-              <span><span class="font-bold">结论：</span>广告对消费者吸引力降低，更多是<span class="hl">商家的原因</span>。</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-rust font-bold font-en">B.</span>
-              <span><span class="font-bold">原因：</span>商家在同赛道互相抄袭彼此广告，使广告呈现同质化。</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-rust font-bold font-en">C.</span>
-              <span><span class="font-bold">后果：</span>消费者在各种社交平台持续刷到同类同质化广告后，逐渐对后续广告失去兴趣。</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-rust font-bold font-en">D.</span>
-              <span><span class="font-bold">影响：</span>具有购买潜力的人甚至不会等广告播放完毕就退出宣传视频 → 广告吸引力逐渐降低。</span>
-            </li>
-          </ul>
+    <div class="card">
+      <div class="chart-badge">📊 Bar Chart · 全球五大手机品牌销量 (2009-2013)</div>
+
+      <div class="example-pair">
+        <div class="example-wrong">
+          <div class="example-label">❌ 不能这样写</div>
+          Nuclear was 75 terawatt hours of electricity.<br>
+          Nuclear produced 75 terawatt hours of electricity.
         </div>
-        <div class="pull-quote text-base text-ink my-5">
-          每一句都是单独逻辑点，不存在开头案例展示和后续的逻辑重复——这就是<span class="font-bold">论证应该兼顾"言简意赅 + 充分展开"</span>的实操。
+        <div class="example-right">
+          <div class="example-label">✅ 必须这样写</div>
+          Nuclear power was used to produce 75 terawatt hours of electricity.<br>
+          Nuclear power stations produced 75 terawatt hours of electricity.
         </div>
-        <div class="flex gap-2 flex-wrap mt-4">
-          <span class="badge">言简意赅</span>
-          <span class="badge">充分展开</span>
-          <span class="badge badge-ochre">特殊疑问词提问法</span>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The bar chart compares the number of mobile phones sold worldwide by the five most popular manufacturers in the years 2009, 2011 and 2013.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">It is clear that Nokia sold the most mobile phones between 2009 and 2011, but Samsung became the best selling brand in 2013. Samsung and Apple saw the biggest rises in sales over the 5-year period.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3</span>
+        <p class="essay-text">In 2009, Nokia sold close to 450 million mobile phones, which was almost double the number of handsets sold by the second most successful manufacturer, Samsung. Over the following four years, however, Nokia's sales figures fell by approximately 200 million units, whereas Samsung saw sales rise by a similar amount. By 2013, Samsung had become the market leader with sales reaching 450 million units.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4</span>
+        <p class="essay-text">The other three top selling mobile phone brands between 2009 and 2013 were LG, ZTE and Apple. In 2009, these companies sold around 125 million, 50 million and 25 million mobile handsets respectively, but Apple overtook the other two vendors in 2011. In 2013, purchases of Apple handsets reached 150 million units, while LG saw declining sales and the figures for ZTE rose only slightly.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">sold worldwide</span>
+          <span class="vocab-tag">sales figures / purchases</span>
+          <span class="vocab-tag">most popular / best selling brand</span>
+          <span class="vocab-tag">second most successful manufacturer</span>
+          <span class="vocab-tag">market leader</span>
+          <span class="vocab-tag">mobiles phones / handsets / units</span>
+          <span class="vocab-tag">brands / manufacturers / companies / vendors</span>
+          <span class="vocab-tag">saw the biggest rises / saw declining sales</span>
+          <span class="vocab-tag">close to / almost / approximately / around</span>
+          <span class="vocab-tag">double the number</span>
+          <span class="vocab-tag">rise by a similar amount</span>
+          <span class="vocab-tag">respectively</span>
+          <span class="vocab-tag">overtook the other two vendors</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T1 Pie Chart -->
+  <div class="section" id="t1-pie">
+    <div class="section-header">
+      <div class="section-icon task1">🥧</div>
+      <div>
+        <div class="section-title">Pie Chart 饼图</div>
+        <div class="section-subtitle">范文示范 · 家庭支出对比</div>
+      </div>
+    </div>
 
-<!-- Chapter 7 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">07</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.9 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">观点可聊时，连方法都不需要</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          当我们选择的观点和角度本身就对自己有<span class="hl">极强可聊性</span>时，甚至不需要"特殊疑问词提问法"这种辅助方法，就能把内容充分扩展、保持高学术写作质量。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          话够多的时候，我们不需要任何方法的束缚，<span class="font-bold">只需要优中选优找到自己最能拿高分的那一项</span>。
-        </p>
-        <div class="pull-quote text-base text-ink my-5">
-          课程真正要培养的，是<span class="font-bold">自己的写作能力</span>，而不是过于应试的死记硬背——抓住从不同视角和万能思路入手拓展观点的<span class="font-bold">方法</span>，而不是照搬范文词句。
+    <div class="card">
+      <div class="chart-badge">🥧 Pie Chart · 新西兰与英国家庭支出 (1980 vs 2008)</div>
+
+      <div class="tip-box">
+        <strong>饼图技巧：</strong><br>
+        ① 不要单独描述每个国家或每个年份<br>
+        ② 将国家和年份放在一起<strong>对比</strong><br>
+        ③ 提及所有 5 个类别<br>
+        ④ 将类别分成两组，分别写两个 Details 段<br>
+        ⑤ "Other" 类别不重要
+      </div>
+
+      <div class="example-pair">
+        <div class="example-wrong">
+          <div class="example-label">❌ 不能这样写</div>
+          Leisure was 34%.
+        </div>
+        <div class="example-right">
+          <div class="example-label">✅ 必须这样写</div>
+          Households spent 34% of their money on leisure.
+        </div>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">It is noticeable that the proportion of spending on food and drink fell in both countries over the 28-year period, while spending on utility bills rose. Also, UK residents spent a significantly larger percentage of their household budgets on leisure than their New Zealand counterparts.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3</span>
+        <p class="essay-text">In 1980, 29% of an average New Zealand household budget went on food and drink, while the equivalent figure for a UK home was 23%. By 2008, expenditure on food and drink had fallen by 4% in New Zealand, and by a full 10% in the UK. By contrast, both countries saw an increase in expenditure on utility bills for the average home, from 27% to 31% in New Zealand and from 26% to 28% in the UK.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">spending / expenditure / spent / costs</span>
+          <span class="vocab-tag">proportion of spending</span>
+          <span class="vocab-tag">percentage of household budget</span>
+          <span class="vocab-tag">the equivalent figure for a UK home</span>
+          <span class="vocab-tag">fell / rose / saw an increase in</span>
+          <span class="vocab-tag">by 2008, expenditure had fallen</span>
+          <span class="vocab-tag">spent a significantly larger percentage</span>
+          <span class="vocab-tag">than their New Zealand counterparts</span>
+          <span class="vocab-tag">29% of an average household budget went on</span>
+          <span class="vocab-tag">while / by contrast</span>
+          <span class="vocab-tag">leisure accounted for the highest proportion</span>
+          <span class="vocab-tag">spent half as much in relative terms</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+  <!-- T1 Table -->
+  <div class="section" id="t1-table">
+    <div class="section-header">
+      <div class="section-icon task1">📋</div>
+      <div>
+        <div class="section-title">Table 表格</div>
+        <div class="section-subtitle">范文示范 · 国际旅游数据</div>
+      </div>
+    </div>
 
-<!-- Chapter 8 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">08</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.10 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">为什么视角能直接决定质量</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          很多同学觉得广告敏感度降低这道题抽象困难，是因为<span class="hl">自动把答题思路代入到了消费者视角</span>，甚至更具体的"自己个人视角"。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          当题目增加了<span class="font-bold">商家视角</span>作为讨论的潜在可能之后，就变得非常简单。
-          因为雅思写作作为学术写作，更需要讨论<span class="hl">社会民生</span>的话题——
-          把答案局限在个体层面 vs 放大到商家的社会群体层面，<span class="font-bold">后者质量会明显高于前者</span>。
-        </p>
-        <div class="bg-cream border-l-4 border-rust p-5 my-5 rounded-r-lg">
-          <p class="text-sm text-ink/80 leading-relaxed">
-            仅放在个体或消费者立场上，容易想到的只有"见过够多广告所以没兴趣了"——这种内容想进一步拓展成<span class="font-bold">有足够篇幅、每句之间逻辑不重复</span>的高级学术感论证是极困难的。
-          </p>
-          <p class="text-sm text-ink/70 leading-relaxed mt-3">
-            不是写作能力有问题，而是这种视角更多讨论的是心理——而心理本身就是极为抽象的概念，"Broaden one's horizon" / "Good for mental health" 很难拓展得详细具体。
-          </p>
+    <div class="card">
+      <div class="chart-badge">📋 Table · 国际旅游 Top 5 国家 (2012-2013)</div>
+
+      <div class="tip-box">
+        <strong>表格关键技能：Selecting（选择信息）</strong><br>
+        表格信息量很大（too much!），你不需要提及每个数字。从 20 个数据中选择约 10 个来描述。
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The table compares the five highest ranking countries in terms of the numbers of visits and the money spent by tourists over a period of two years.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">It is clear that France was the world's most popular tourist destination in the years 2012 and 2013. However, the USA earned by far the most revenue from tourism over the same period.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3</span>
+        <p class="essay-text">In 2012, 83 million tourists visited France, and the USA was the second most visited country, with 66.7 million tourists. Spain and China each received just under 58 million visitors, while Italy was ranked fifth with 46.4 million tourists. 2013 saw a rise of between 1 and 4 million tourist visits to each country, with the exception of China, which received 2 million fewer visitors than in the previous year.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4</span>
+        <p class="essay-text">Spending by tourists visiting the USA increased from $126.2 billion in 2012 to $139.6 billion in 2013, and these figures were well over twice as high as those for any other country. Spain received the second highest amounts of tourist revenue, rising from $56.3 billion to $60.4 billion, followed by France, China and Italy. Interestingly, despite falling numbers of tourists, Chinese revenue from tourism rose by $1.7 billion in 2013.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">five highest ranking countries</span>
+          <span class="vocab-tag">the world's most popular tourist destination</span>
+          <span class="vocab-tag">earned by far the most</span>
+          <span class="vocab-tag">revenue from tourism</span>
+          <span class="vocab-tag">the second most visited country</span>
+          <span class="vocab-tag">received visitors</span>
+          <span class="vocab-tag">ranked fifth</span>
+          <span class="vocab-tag">2013 saw a rise of</span>
+          <span class="vocab-tag">fewer visitors than in the previous year</span>
+          <span class="vocab-tag">well over twice as high as</span>
+          <span class="vocab-tag">amounts of tourist revenue</span>
+          <span class="vocab-tag">despite falling numbers</span>
+          <span class="vocab-tag">saw a rise / increased / rising from / rose by</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
-
-<!-- Chapter 9 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">09</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.11 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">思路 × 视角 排列组合</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          在有了 9 个万能思路之后，又知道每道题至少包含 2 个不同视角，就可以将<span class="hl">思路和视角进行排列组合</span>。
-        </p>
-        <div class="bg-ink text-paper rounded-2xl p-8 my-6 text-center">
-          <div class="text-xs tracking-widest text-sage mb-3">组合公式</div>
-          <div class="font-en text-4xl md:text-5xl font-semibold">
-            <span class="text-ochre">9</span> <span class="text-paper/60">×</span> <span class="text-ochre">3</span> <span class="text-paper/60">=</span> <span class="text-paper">27</span>
-          </div>
-          <div class="text-sm text-paper/70 mt-3">条潜在观点。即使砍掉一半不适合的，也还能剩十几个。</div>
-        </div>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          可以做初步筛选——比如心理相关的内容往往比较空洞、难以充分展开，那把心理的观点全部排除掉，不给自己添麻烦。
-        </p>
-        <p class="text-sm text-ink/70 leading-relaxed">
-          在第一道犯罪类题目中，"安全"和"钱"两个思路的展开篇幅也有区别——后者在草稿阶段的论证内容篇幅就远多于安全。
-        </p>
+  <!-- T1 Mixed -->
+  <div class="section" id="t1-mixed">
+    <div class="section-header">
+      <div class="section-icon task1">🔀</div>
+      <div>
+        <div class="section-title">Mixed Chart 混合图</div>
+        <div class="section-subtitle">两种不同图表 · 不对比，分别描述</div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+    <div class="card">
+      <div class="chart-badge">🔀 Mixed · 柱状图 + 饼图 · 夜校课程 (2009)</div>
 
-<!-- Chapter 10 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">10</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.12 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">优中选优：放弃"只能想到一行"的那个</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          在有更多可选观点的情况下，<span class="hl">放弃"安全"这个只能想到一行的观点</span>，转而优先考虑"钱"对应的观点如何优化，将其从草稿变成更高质量的答案。
-        </p>
-        <div class="bg-white border-2 border-ink rounded-xl p-5 my-5">
-          <div class="text-xs tracking-widest text-ink font-bold mb-2">整体选择原则</div>
-          <p class="font-serif text-lg text-ink">尽可能选自己<span class="hl">有更多话可说的那个观点</span>。</p>
-        </div>
+      <div class="tip-box">
+        <strong>混合图原则：</strong>两种不同图表不能对比（can't compare together），需要<strong>分别描述</strong>。
       </div>
-    </div>
-  </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
-
-<!-- Chapter 11 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">11</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.13 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">学术高级感：从"灌水"到"言简意赅"</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          雅思写作作为学术化考试，<span class="hl">学术高级感</span>是核心要求——
-          既包括更多进行<span class="font-bold">社会民生</span>而非家长里短探讨的宏观立意，
-          也包括句子的<span class="font-bold">言简意赅</span>和<span class="font-bold">句式风格</span>等微观细节。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          难点在于大部分同学很难保证自己每一句话都没有任何多余信息——<span class="hl">往论证中注水是影响学术高级感的重要因素</span>，也是最难在短期解决的问题。
-        </p>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          既然知道话中有大量冗余信息，就可以<span class="font-bold">疯狂压缩</span>，让话语变得更加精简。
-          这种压缩的前提是——我们要找到那些本来就<span class="hl">能聊很多话</span>的论点和论证，这样才不会在压缩之后导致字数不够。
-        </p>
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The bar chart compares the numbers of males and females who took four different evening classes in 2009, and the pie chart shows the age profile of these attendees.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
-
-<!-- Chapter 12 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">12</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.14 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">凝练示范：从草稿到 8.5 分范文</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          当我们本身就有十几个潜在观点、并且不乏像犯罪类例题中"政府开销"那样的长篇大论内容时，<span class="hl">就可以通过语言的精简和凝练，将其质量提升一个台阶</span>。
-        </p>
-        <p class="text-sm text-muted mb-3">"钱"相关草稿的中英文凝练示范：</p>
-
-        <div class="bg-cream border border-line rounded-xl p-6 my-5">
-          <div class="text-xs tracking-widest text-rust font-bold mb-2">原文（草稿）</div>
-          <p class="text-sm text-ink/80 leading-relaxed mb-4">
-            从政府开销的角度讲，如果对所有犯罪都具体情况具体分析，而非采取统一的量刑标准，就需要政府增加司法从业人员的数量，并且每位法律工作者所花的时间也会更多，这将让政府产生更多开销。但对于大部分国家和社会来说，有限的财政预算倾斜在此处并不合理，也不现实。
-          </p>
-          <div class="border-t border-dashed border-line my-4"></div>
-          <div class="text-xs tracking-widest text-moss font-bold mb-2">凝练后（中文）</div>
-          <p class="font-serif text-base text-ink leading-relaxed mb-4">
-            对于每一个犯罪案例具体情况具体分析，将增加政府在司法部门从业人员的数量和人工成本。职能部门中的法律工作者在每一个案件所花费的时间和人工成本都会更多，但政府的开销增加在此处对于大部分国家的行政体系来说，<span class="hl">既不合理也不现实</span>。
-          </p>
-          <div class="text-xs tracking-widest text-ochre font-bold mb-2">凝练后（English version）</div>
-          <p class="font-en text-sm text-ink/80 leading-relaxed italic">
-            Handling every criminal case on an individual basis would inevitably increase the government's expenditure on the judicial system. More judges, prosecutors and other legal professionals would be required, while each case would demand significantly more time and manpower. Consequently, the additional financial burden imposed on the government would be neither practical nor sustainable for the vast majority of countries.
-          </p>
-        </div>
-        <p class="text-sm text-ink/70 leading-relaxed">
-          中文为主讲解的两点原因：① 中英兼顾会让二者质量都下降，用中文讲逻辑更清楚 ② 课程里有逐词翻译法，写中文反而是更大的优势。
-        </p>
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">It is clear that significantly more women than men attended evening classes at the education centre. We can also see that evening courses were much more popular among older adults.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
-
-<!-- Chapter 13 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">13</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.15 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">总结：三步走的底层公式</h3>
-        <div class="grid md:grid-cols-3 gap-4 my-6">
-          <div class="bg-white border border-line rounded-xl p-5">
-            <div class="text-rust font-en text-2xl font-semibold mb-2">①</div>
-            <div class="font-serif font-bold text-ink mb-1">根源</div>
-            <p class="text-sm text-ink/70">把论点作为文章一切发散的根源</p>
-          </div>
-          <div class="bg-white border border-line rounded-xl p-5">
-            <div class="text-rust font-en text-2xl font-semibold mb-2">②</div>
-            <div class="font-serif font-bold text-ink mb-1">发散</div>
-            <p class="text-sm text-ink/70">将万能思路和视角进行排列组合</p>
-          </div>
-          <div class="bg-white border border-line rounded-xl p-5">
-            <div class="text-rust font-en text-2xl font-semibold mb-2">③</div>
-            <div class="font-serif font-bold text-ink mb-1">收敛</div>
-            <p class="text-sm text-ink/70">优中选优，找到最能拿高分的那一项</p>
-          </div>
-        </div>
-        <p class="text-base text-ink/80 leading-relaxed">
-          即使是草稿内容，对大部分同学来说已经可以直接用了；
-          但按照这个流程练一段时间，把草稿转变成 8.5 分范文是完全可行的。
-        </p>
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3 — 柱状图</span>
+        <p class="essay-text">According to the bar chart, drama, painting and language courses all attracted more women than men to the education centre in 2009. Language classes had the highest number of participants overall, with 40 female and 20 male students, while painting was a popular choice among both genders, attracting 30 female and 25 male attendees. The only course with a higher number of males was sculpture, but this course was taken by a mere 15 people in total.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<div class="max-w-5xl mx-auto px-6"><div class="border-t border-dashed border-line"></div></div>
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4 — 饼图</span>
+        <p class="essay-text">Looking at the age profile pie chart, we can see that the majority of people attending evening lessons were over 40 years of age. To be precise, 42% of them were aged 50 or more, and 26% were aged between 40 and 49. Younger adults were in the minority, with only 11% of students aged 20 to 29, and only 5% aged under 20.</p>
+      </div>
 
-<!-- Chapter 14 -->
-<section class="max-w-5xl mx-auto px-6 mb-16 mt-16">
-  <div class="reveal">
-    <div class="flex items-start gap-6">
-      <div class="chapter-num text-7xl md:text-8xl leading-none">14</div>
-      <div class="flex-1 pt-3">
-        <div class="text-xs tracking-widest text-muted mb-2">P.16 / 16</div>
-        <h3 class="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">最终回响：主观能动性 & 知识体系</h3>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          想要提高自己文章的论点水平以及后续展开的论证质量，更应该做的就是
-          <span class="hl">将万能思路和不同视角进行排列组合式的思维发散</span>，
-          通过这种方式找到最适合自己的内容，将其落笔呈现在卷面上，
-          <span class="font-bold">发挥出写作作为主观题最大的主观能动性</span>，而不是落入自己最不擅长写的观点的陷阱和误区。
-        </p>
-        <div class="pull-quote text-lg text-ink my-5">
-          对于主观题来说，只要话题是我们足够擅长的，每一位考生都可以变成<span class="font-bold">当代鲁迅</span>（English version）。
-        </div>
-        <p class="text-base text-ink/80 leading-relaxed mb-4">
-          在雅思备考过程中，有很多类似这样的小细节是被大家所忽略的。
-          我们往往看重的是一篇文章包含几个自然段以及每个自然段中有哪些信息，
-          但这其实都是将一篇高质量的范文拆解之后得到的<span class="font-bold">学法</span>。
-          大部分同学需要的反而是<span class="hl">从无到有的构建过程</span>，而不是从有拆无的细节知识点。
-        </p>
-        <div class="bg-ink text-paper rounded-2xl p-8 my-6">
-          <p class="font-serif text-lg leading-relaxed">
-            这正是这篇笔记发布在这里的初衷——分享教学理念，对自学者起到启发和帮助；
-            对需要上课的同学，希望大家是在<span class="hl">认可这种方法之后，觉得适合自己再报名</span>，
-            而不是被那些容易被营销包装的师资背景等信息裹挟。
-          </p>
-          <p class="text-sm text-paper/70 mt-4 italic">最终决定我们学习效果的，永远是合理的知识体系。</p>
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">attending courses / who took classes</span>
+          <span class="vocab-tag">participants / attendees / students</span>
+          <span class="vocab-tag">males and females</span>
+          <span class="vocab-tag">courses attracted more women</span>
+          <span class="vocab-tag">a popular choice among both genders</span>
+          <span class="vocab-tag">significantly more / higher / highest</span>
+          <span class="vocab-tag">had the highest number, with (+number)</span>
+          <span class="vocab-tag">was taken by a mere 15 people</span>
+          <span class="vocab-tag">According to the bar chart</span>
+          <span class="vocab-tag">Looking at the age profile pie chart</span>
+          <span class="vocab-tag">the majority of people</span>
+          <span class="vocab-tag">were in the minority</span>
+          <span class="vocab-tag">To be precise</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ============== 总结流程图 ============== -->
-<section class="max-w-5xl mx-auto px-6 my-24">
-  <div class="reveal">
-    <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-3 mb-4">
-        <div class="ornament"></div>
-        <div class="text-sm text-muted tracking-widest">METHOD FLOW</div>
-        <div class="ornament"></div>
+  <!-- T1 Process -->
+  <div class="section" id="t1-process">
+    <div class="section-header">
+      <div class="section-icon task1">🔄</div>
+      <div>
+        <div class="section-title">Process 流程图</div>
+        <div class="section-subtitle">无数字 · 无对比 · 描述步骤和被动语态</div>
       </div>
-      <h2 class="font-serif text-3xl md:text-4xl font-black text-ink">方法流 · 一图看懂</h2>
     </div>
 
-    <div class="bg-white border-2 border-ink rounded-2xl p-8 md:p-12">
-      <div class="grid md:grid-cols-5 gap-4 items-stretch">
-        <div class="text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-ink text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">1</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">想不出观点</div>
-          <div class="text-xs text-muted">或观点空洞低质</div>
-        </div>
-        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
-        <div class="text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-ochre text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">2</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">万能思路</div>
-          <div class="text-xs text-muted">9 个池子硬套</div>
-        </div>
-        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
-        <div class="text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-ochre text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">3</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">切换视角</div>
-          <div class="text-xs text-muted">每题至少 2 个</div>
-        </div>
+    <div class="card">
+      <div class="chart-badge">🔄 Process · 玻璃容器生产与回收</div>
+
+      <div class="tip-box">
+        <strong>流程图特点：</strong>没有数字、不能对比、不能描述趋势<br>
+        <strong>能描述什么？</strong><br>
+        · 有多少步骤（how many steps）<br>
+        · 每个步骤做什么（each step in the process）<br>
+        · 流程从哪里开始、到哪里结束<br>
+        <strong>语言特点：</strong>多用<strong>被动语态</strong>（passive verbs）
       </div>
 
-      <div class="flex justify-center my-6">
-        <div class="text-2xl text-ochre">↓</div>
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The first flow diagram illustrates the process of glass container production, and the second diagram shows steps in the process of recycling used glass.</p>
       </div>
 
-      <div class="grid md:grid-cols-5 gap-4 items-stretch">
-        <div class="md:col-start-2 text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-moss text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">4</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">排列组合</div>
-          <div class="text-xs text-muted">9 × 3 = 27 潜在观点</div>
-        </div>
-        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
-        <div class="text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-moss text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">5</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">优中选优</div>
-          <div class="text-xs text-muted">选话多的那个</div>
-        </div>
-        <div class="hidden md:flex items-center justify-center text-2xl text-ochre">→</div>
-        <div class="text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-rust text-paper flex items-center justify-center font-en font-semibold text-lg mb-3">6</div>
-          <div class="font-serif font-bold text-ink text-base mb-1">言简意赅</div>
-          <div class="text-xs text-muted">凝练 → 8.5 分</div>
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3 — 生产流程</span>
+        <p class="essay-text">At the first stage in the production of glass, sand, soda ash, limestone and other chemicals are mixed together. Next, this mixture is heated in a glass furnace at approximately 1500°C to produce molten glass. The molten glass can then be shaped, by blowing, to create the end products, namely glass containers.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4 — 回收流程</span>
+        <p class="essay-text">Glass recycling begins with the collection of used glass products. The collected glass is sorted according to its colour, and then washed in order to remove any impurities. At the fourth stage of recycling, the glass is crushed and melted, and the resulting molten glass can finally be moulded to create new items.</p>
+      </div>
+
+      <div class="vocab-box">
+        <div class="vocab-title">🔑 核心词汇</div>
+        <div class="vocab-list">
+          <span class="vocab-tag">steps / stages in the process of</span>
+          <span class="vocab-tag">consists of four distinct stages</span>
+          <span class="vocab-tag">it requires five steps</span>
+          <span class="vocab-tag">raw materials / end products</span>
+          <span class="vocab-tag">production / manufacturing</span>
+          <span class="vocab-tag">turn used glass into new products</span>
+          <span class="vocab-tag">at the first stage / next / then / begins with</span>
+          <span class="vocab-tag">are mixed / is heated / can be shaped</span>
+          <span class="vocab-tag">is sorted according to</span>
+          <span class="vocab-tag">can be moulded to create</span>
+          <span class="vocab-tag">are mixed → this mixture</span>
+          <span class="vocab-tag">collection → the collected glass</span>
+          <span class="vocab-tag">is melted → the resulting molten glass</span>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ============== 收尾 ============== -->
-<footer class="max-w-5xl mx-auto px-6 pb-20">
-  <div class="reveal text-center">
-    <div class="ornament inline-block mb-6"></div>
-    <p class="font-serif text-2xl md:text-3xl text-ink leading-relaxed max-w-3xl mx-auto">
-      写作的根源是<span class="hl">论点</span>，<br/>
-      论点的根源是<span class="hl">可聊性</span>，<br/>
-      可聊性的根源是<span class="hl">思路 × 视角</span>。
-    </p>
-    <p class="text-sm text-muted mt-8 tracking-widest">— END OF NOTES —</p>
+  <!-- T1 Map -->
+  <div class="section" id="t1-map">
+    <div class="section-header">
+      <div class="section-icon task1">🗺️</div>
+      <div>
+        <div class="section-title">Map 地图题</div>
+        <div class="section-subtitle">比较图表 · 变化对比与时态运用</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="chart-badge">🗺️ Map · 房屋平面图改造前后对比</div>
+
+      <p style="font-weight:600; margin-bottom:8px;">三种主要类型：</p>
+      <table class="info-table">
+        <thead><tr><th>类型</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>变化对比</strong></td><td>旧设计 vs 新设计（如 1980年与2012年学校平面图对比）</td></tr>
+          <tr><td><strong>替代设计</strong></td><td>两种方案对比（如暖气候与冷气候的房屋设计方案）</td></tr>
+          <tr><td><strong>地图选址</strong></td><td>两个备选位置对比（如超市两个位置）</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-weight:600; margin:16px 0 8px;">四大比较维度：</p>
+      <div class="group-diagram">
+        <div class="group-item group-up">描述变化</div>
+        <div class="group-item group-down">描述不变要素</div>
+        <div class="group-item group-peak">描述差异</div>
+        <div class="group-item group-flat">描述相似点</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="font-weight:600; margin-bottom:12px;">时态使用规则</p>
+      <table class="info-table">
+        <thead><tr><th>场景</th><th>图1时态</th><th>图2时态</th></tr></thead>
+        <tbody>
+          <tr><td>两个过去时间点（如 1980 vs 2012）</td><td>过去时 (had, was built)</td><td>过去时</td></tr>
+          <tr><td>过去 vs 当前（before & after）</td><td>过去时 (There were)</td><td>现在时 / 现在完成时 (There is now / has been built)</td></tr>
+          <tr><td>当前 vs 未来规划</td><td>现在时 (has, contains)</td><td>将来时 (will be built)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="essay-para">
+        <span class="essay-label">Introduction</span>
+        <p class="essay-text">The two pictures compare the current layout of the ground floor of a house with a plan to redesign the same living space.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label overview">Overview</span>
+        <p class="essay-text">We can see that the new design proposal involves making a number of changes to the ground floor of the house, mainly in the central hall area. There are no plans to change external walls or entrances.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 3</span>
+        <p class="essay-text">The most noticeable change from the existing to the proposed floor plan is that there will no longer be a separate hall area when the building work has been done. This will be achieved by removing the internal wall and door between the hall and living room, along with the current staircase and under-stair storage cupboard.</p>
+      </div>
+
+      <div class="essay-para">
+        <span class="essay-label">Paragraph 4</span>
+        <p class="essay-text">To replace the current straight staircase, a new set of winding stairs will be installed in the corner of the living room. The internal door between the hall and kitchen will also be replaced with double doors connecting the kitchen with the new living room. Finally, the planned building work will also include the installation of some kitchen furniture.</p>
+      </div>
+
+      <div class="tip-box">
+        <strong>地图题技巧：</strong>P3 和 P4 两张图不要分开描述，要 group 到一起。<br>
+        <strong>被动语态：</strong>建筑类描述常用被动语态（will be built, will be installed）。
+      </div>
+    </div>
   </div>
-</footer>
+
+  <!-- Footer -->
+  <div style="text-align:center; padding:40px 0; color:var(--text-light); font-size:13px;">
+    <p>雅思写作笔记 · Simon Task 1 & 2 · 整理自课程笔记</p>
+    <p style="margin-top:4px;">左上角导航栏可快速跳转到各章节</p>
+  </div>
+
+</div>
 
 <script>
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
+  // Active nav highlighting
+  const sections = document.querySelectorAll('.section');
+  const navItems = document.querySelectorAll('.nav-item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navItems.forEach(n => {
+      n.classList.toggle('active', n.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Close sidebar on nav click (mobile)
+  navItems.forEach(n => {
+    n.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        document.querySelector('.sidebar').classList.remove('open');
       }
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  });
 </script>
+
 </body>
 </html>
